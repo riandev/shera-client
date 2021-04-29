@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import UpdateQuery from "../UpdateQuery/UpdateQuery";
-import Modal from "react-modal";
 
 const ManageQuery = () => {
   const [matchedQuries, setMatchedQuries] = useState([]);

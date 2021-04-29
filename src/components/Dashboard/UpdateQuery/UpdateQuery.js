@@ -16,8 +16,8 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 const UpdateQuery = ({ query }) => {
-    const [status,setStatus]=useState(false)
-    const id = query._id;
+  const [status, setStatus] = useState(false);
+  const id = query._id;
   const {
     register,
     handleSubmit,
@@ -26,17 +26,17 @@ const UpdateQuery = ({ query }) => {
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    fetch(`https://ancient-wildwood-60100.herokuapp.com/finalUpdate/${id}`,{
-        method: 'PATCH',
-        headers: {'Content-type': 'application/json'},
-        body: JSON.stringify(data)
+    fetch(`https://ancient-wildwood-60100.herokuapp.com/finalUpdate/${id}`, {
+      method: "PATCH",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(data),
     })
-    .then(res => res.json())
-    .then(data => setStatus(data))
-    .catch(err => console.log(err))
+      .then((res) => res.json())
+      .then((data) => setStatus(data))
+      .catch((err) => console.log(err));
   };
-  if(status === true){
-      alert('Query Update Successfully')
+  if (status === true) {
+    alert("Query Update Successfully");
   }
   return (
     <div className="w-75">
@@ -120,6 +120,20 @@ const UpdateQuery = ({ query }) => {
               defaultValue={query.remarks}
               {...register("remarks")}
             />
+          </Form.Group>
+          <Form.Group as={Col} controlId="formGridCity">
+            <Form.Label>
+              <b>Sell Status:</b>
+            </Form.Label>
+            <Form.Control
+              {...register("sellStatus")}
+              as="select"
+              defaultValue={query.sellStatus}
+            >
+            <option>Successfull</option>
+            <option>Not Successfull</option>
+            <option>Query</option>
+            </Form.Control>
           </Form.Group>
         </Form.Row>
         <input className="btn btn-danger" type="submit" />
