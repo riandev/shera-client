@@ -3,13 +3,14 @@ import React, { useEffect, useRef, useState } from "react";
 const DashboardHome = () => {
   const [todayStatus, setTodayStatus] = useState([]);
   const [searchStatus, setSearchStatus] = useState([]);
+  const months=new Date().getMonth()
   const today =
     new Date().getDate() +
     "/" +
-    new Date().getMonth() +
+    (months+1) +
     "/" +
     new Date().getFullYear();
-    console.log(today);
+console.log(today);
 
   useEffect(() => {
     fetch("https://ancient-wildwood-60100.herokuapp.com/dateList?date=" + today)
@@ -34,7 +35,7 @@ const DashboardHome = () => {
     <div>
       <div>
         <h4 style={{ color: "#2596be" }}>
-          Total Queries of <b>{todayStatus.length}</b>
+          Total Queries <b>{todayStatus.length}</b> on <b>{today}</b>
         </h4>
         <table className="table table-borderless table-hover">
           <thead>

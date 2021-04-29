@@ -13,14 +13,15 @@ const AddQuery = () => {
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
+    const months=new Date().getMonth();
     data.agent = agentMail;
     data.date = new Date().getDate();
-    data.month = new Date().getMonth();
+    data.month = months+1;
     data.year = new Date().getFullYear();
     data.hours = new Date().getHours();
     data.minutes = new Date().getMinutes();
     data.seconds = new Date().getSeconds();
-    data.fullDate=new Date().getDate()+'/'+new Date().getMonth()+'/'+new Date().getFullYear();
+    data.fullDate=new Date().getDate()+'/'+(months+1)+'/'+new Date().getFullYear();
     fetch("https://ancient-wildwood-60100.herokuapp.com/quries", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
