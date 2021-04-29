@@ -9,6 +9,7 @@ const DashboardHome = () => {
     new Date().getMonth() +
     "/" +
     new Date().getFullYear();
+    console.log(today);
 
   useEffect(() => {
     fetch("https://ancient-wildwood-60100.herokuapp.com/dateList?date=" + today)
@@ -33,7 +34,7 @@ const DashboardHome = () => {
     <div>
       <div>
         <h4 style={{ color: "#2596be" }}>
-          Total Queries of <b>{today}</b>
+          Total Queries of <b>{todayStatus.length}</b>
         </h4>
         <table className="table table-borderless table-hover">
           <thead>
@@ -81,7 +82,7 @@ const DashboardHome = () => {
           Search
         </button>
       </div>
-      <div style={{display: searchStatus ? 'none' :'block'}}>
+      <div style={{display: searchStatus.length > 0 ? 'block' :'none'}}>
         <table className="table table-borderless table-hover">
           <thead>
             <tr className="text-secondary">
